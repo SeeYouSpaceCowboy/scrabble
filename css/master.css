@@ -1,0 +1,51 @@
+body {
+}
+
+.container {
+  margin: 0 auto;
+  width: 100em;
+}
+
+h2, h5 {
+  text-align: center;
+  vertical-align: center;
+}
+
+.space {
+  height: 10em;
+}
+
+.square {
+  min-width: 3em;
+  min-height: 3em;
+  flex-grow: 1;
+  border-radius: 10px;
+  border: 0.15em solid #3498db;
+  background-color: #EAE2CF;
+}
+
+.handSquare {
+  min-width: 3em;
+  min-height: 3em;
+  flex-grow: 1;
+  border-radius: 10px;
+  border: 0.15em solid #3498db;
+  background-color: #EAE2CF;
+  overflow: hidden;
+}
+
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  width: 45em;
+  height: 45em;
+  margin: 0 auto;
+  background-color: #3498db;
+}
+
+.hand {
+  display: flex;
+  flex-wrap: wrap;
+  width: 21em;
+  height: 3em;
+}
