@@ -1,58 +1,110 @@
-var tile = ""
+var tile = []
 var boardStack = []
 var handStack = []
+var toggle = true
 
 class Scrabble {
   constructor(){
     this.board = new Board()
-    this.handOne = new Hand()
+    this.playerOne = new HandOne()
+    this.playerTwo = new HandTwo()
   }
 
   render(){
     this.board.render(this.addSquareClick.bind(this))
-    this.handOne.render(this.addHandSquareClick.bind(this))
-    
+    this.playerOne.render()//this.addHandSquareClick.bind(this))
+    this.addHandOneSquareClick()
+
+    this.playerTwo.render()
+    this.addHandTwoSquareClick()
+
     $(`${this.board.boardGrid[8][8].id}`).css('background-color', '#f39c12')
   }
-
-  // centerRed(){
-  
-  //   let middleTile = this.board.boardGrid[8][8]
-
-  // }
 
   addSquareClick(){
     $('.square').click((event) => {
       let $targetTile = $(event.target)
-      if(tile != null && tile != "" && ($targetTile.text() === null  || $targetTile.text() === "") ){
+      if(tile.length != 0 && ($targetTile.text() === null  || $targetTile.text() === "") ){
         $targetTile.css('background-color', '#f39c12')
-        // [div#12_1.square]
-        $targetTile.append(`<h5>${tile}</h5>`)
-        boardStack.push([tile, event.target.id])
-        tile = ""
+        $targetTile.append(`<h5>${tile[0]}</h5>`)
+        boardStack.push([tile[0], event.target.id, tile[1]])
+        tile = []
       }
     })
   }
 
-  addHandSquareClick(){
-    $('.handSquare').click((event) => {
-      let $targetTile = $(event.target)
-      if(tile === "" && $targetTile.text() != ""){
-        tile = $targetTile.text()
+  addHandOneSquareClick(){
+    $('div.one').on('click', 'div.handSquare', function(event){
+      if(toggle){
+        let $targetTile = $(this)
+        if(tile.length === 0 && $targetTile.text() != ""){
+          tile.push($targetTile.children('h2').text())
+          tile.push(parseInt($targetTile.find('.points').text()))
 
-        if(tile != ""){
-          handStack.push([tile, event.target.id])
+          if(tile.length != 0){
+            handStack.push([tile[0], this.id])
+          }
+
+          $targetTile.remove()
+          $targetTile.text("")
         }
+      }
+    })
+  }
 
-        $targetTile.text("")
+  addHandTwoSquareClick(){
+    $('div.two').on('click', 'div.handSquare', function(event){
+      if(!toggle){
+        let $targetTile = $(this)
+        if(tile.length === 0 && $targetTile.text() != ""){
+          tile.push($targetTile.children('h2').text())
+          tile.push(parseInt($targetTile.find('.points').text()))
+          
+          if(tile.length != 0){
+            handStack.push([tile[0], this.id])
+          }
+
+          $targetTile.remove()
+          $targetTile.text("")
+        }
       }
     })
   }
 
   onFinishTurn(){
     $('.finish').click((event) => {
-      debugger
-      tileStack = []
+      let player = null
+      if(toggle){
+        player = this.playerOne
+      } else {
+        player = this.playerTwo
+      }
+
+      let boardStackScoreSum = 0
+      for(var i = 0; i < boardStack.length; i++){
+        for(var j = 0; j < player.handTiles.length; j++){
+          if(player.handTiles[j][0] === boardStack[i][0]){
+            player.handTiles.splice(j, 1)
+            break
+          }
+        }
+
+        boardStackScoreSum += boardStack[i][2]
+      }
+
+      if(toggle){
+        this.playerOne.score += boardStackScoreSum
+        this.playerOne.render()
+        $('#turn').text("Player Two")
+      } else {
+        this.playerTwo.score += boardStackScoreSum
+        this.playerTwo.render()
+        $('#turn').text("Player One")
+      }
+
+      handStack = []
+      boardStack = []
+      toggle = !toggle
     })
   }
 
@@ -60,7 +112,11 @@ class Scrabble {
     $('.cancel').click((event) => {
       if(handStack != []){
         for(var i = 0; i < handStack.length; i++){
-          $(`#${handStack[i][1]}`).text(handStack[i][0])
+          if(toggle){
+            $('div.one').append(`<div class="handSquare"><h2 class="align-middle">${handStack[i][0]}</h2></div>`)
+          } else {
+            $('div.two').append(`<div class="handSquare"><h2 class="align-middle">${handStack[i][0]}</h2></div>`)
+          }
         }
 
         handStack = []

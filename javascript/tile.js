@@ -41,34 +41,35 @@ const tenPoint = 10
   const z = {"letter": "z", "points": 10, "occerences": 1}
   const allLetters = [a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z]
 
-  
+
 
 class Tile {
   constructor (){
-    this.alphabet = this.buildTiles()
     this.allTiles = this.tileMaker()
   }
 
-  buildTiles(){
-    let tiles = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 'u', 'v', 'w', 'x', 'y', 'z']
-
-    return tiles
-  }
-
   getTile(){
-    let index = (Math.random() * this.alphabet.length) + 1
-    return this.alphabet.splice(index, 1)
+    let index = Math.floor(Math.random() * this.allTiles.length) + 1
+    let tile = null
+
+    this.allTiles[index]['occerences'] -= 1
+    tile = this.allTiles[index]
+
+    if(this.allTiles[index]['occerences'] === 0){
+      this.allTiles.splice(index, 1)
+    }
+
+    return [tile['letter'] , tile['points']]
   }
 
   tileMaker(){
     var tileArray = []
     allLetters.forEach(function(item) {
       for(var i = 0; i < item.occerences; i++){
-          tileArray.push([item.letter, item.points ])
+          tileArray.push(item)
         }
-      }) 
-      debugger
+      })
+
       return tileArray
   }
-
 }

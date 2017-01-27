@@ -26,13 +26,15 @@ h2, h5 {
 }
 
 .handSquare {
-  min-width: 3em;
-  min-height: 3em;
+  width: 3em;
+  height: 3em;
   flex-grow: 1;
   border-radius: 10px;
   border: 0.15em solid #3498db;
   background-color: #EAE2CF;
   overflow: hidden;
+  float: left;
+  display: block;
 }
 
 .board {
@@ -46,10 +48,7 @@ h2, h5 {
 }
 
 .hand {
-  display: flex;
-  flex-wrap: wrap;
   width: 21em;
-  height: 3em;
 }
 
 .button{
