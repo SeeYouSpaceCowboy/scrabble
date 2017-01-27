@@ -15,6 +15,7 @@ h2, h5 {
   height: 10em;
 }
 
+
 .square {
   min-width: 3em;
   min-height: 3em;
@@ -48,4 +49,8 @@ h2, h5 {
   flex-wrap: wrap;
   width: 21em;
   height: 3em;
+}
+
+.button{
+  margin: 1em
 }

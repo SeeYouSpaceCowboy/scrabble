@@ -11,13 +11,22 @@ class Scrabble {
   render(){
     this.board.render(this.addSquareClick.bind(this))
     this.handOne.render(this.addHandSquareClick.bind(this))
+    
+    $(`${this.board.boardGrid[8][8].id}`).css('background-color', '#f39c12')
   }
+
+  // centerRed(){
+  
+  //   let middleTile = this.board.boardGrid[8][8]
+
+  // }
 
   addSquareClick(){
     $('.square').click((event) => {
       let $targetTile = $(event.target)
       if(tile != null && tile != "" && ($targetTile.text() === null  || $targetTile.text() === "") ){
         $targetTile.css('background-color', '#f39c12')
+        // [div#12_1.square]
         $targetTile.append(`<h5>${tile}</h5>`)
         boardStack.push([tile, event.target.id])
         tile = ""
