@@ -3,7 +3,7 @@ body {
 
 .container {
   margin: 0 auto;
-  width: 100em;
+  width: 80em;
 }
 
 h2, h5 {
@@ -12,14 +12,14 @@ h2, h5 {
 }
 
 .space {
-  height: 10em;
+  height: 6em;
 }
 
 .square {
-  min-width: 3em;
-  min-height: 3em;
+  min-width: 2.5em;
+  min-height: 2.5em;
   flex-grow: 1;
-  border-radius: 10px;
+  border-radius: 7px;
   border: 0.15em solid #3498db;
   background-color: #EAE2CF;
 }
@@ -37,8 +37,9 @@ h2, h5 {
 .board {
   display: flex;
   flex-wrap: wrap;
-  width: 45em;
-  height: 45em;
+  width: 37.5em;
+  height: 37.5em;
+  border-radius: 7px;
   margin: 0 auto;
   background-color: #3498db;
 }

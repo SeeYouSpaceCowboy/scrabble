@@ -27,14 +27,15 @@ class Scrabble {
 
   addHandSquareClick(){
     $('.handSquare').click((event) => {
-      let currentTile = $(event.target)
-      if(tile === "" && currentTile.text() != ""){
-        tile = currentTile.text()
+      let $targetTile = $(event.target)
+      if(tile === "" && $targetTile.text() != ""){
+        tile = $targetTile.text()
 
         if(tile != ""){
           handStack.push([tile, event.target.id])
         }
-        $(event.target).text("")
+
+        $targetTile.text("")
       }
     })
   }
