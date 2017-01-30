@@ -6,7 +6,7 @@ class HandOne{
     this.score = 0
   }
 
-  render(){//callback){
+  render(){
     let missing = this.getHand()
 
     for(var i = 0; i < missing; i++){

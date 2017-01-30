@@ -1,5 +1,5 @@
-const row = 15 //Represents x-axis
-const col = 15 //Represents y-axis
+const row = 15
+const col = 15
 
 class Board{
   constructor(){
@@ -11,7 +11,6 @@ class Board{
     for(var x = 0; x < row; x++){
       for(var y = 0; y < col; y++){
         this.board.append(this.boardGrid[x][y])
-
       }
     }
 
@@ -31,13 +30,30 @@ class Board{
         for(var y = 0; y < col; y++){
           square = new Square(x, y)
           boardArray[x][y] = square.render()
-
         }
     }
-// debugger
-//     (boardArray[8][8]).css('background-color', '#FF0000')
-    // // $targetTile = this.board.boardGrid[8][8]
     return boardArray
+  }
 
+  getAdjacentSqaureDirection(id){
+    let x = parseInt(id.split('_')[0])
+    let y = parseInt(id.split('_')[1])
+
+    let $north = $(`#${x+1}_${y}`).text()
+    let $south = $(`#${x-1}_${y}`).text()
+    let $east = $(`#${x}_${y+1}`).text()
+    let $west = $(`#${x}_${y-1}`).text()
+
+    if($north != ""){
+      return $north
+    } else if($south != "") {
+      return $south
+    } else if($east != "") {
+      return $east
+    } else if($west != "") {
+      return $west
+    } else {
+      return false
+    }
   }
 }

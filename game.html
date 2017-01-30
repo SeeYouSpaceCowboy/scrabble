@@ -2,6 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.0/css/foundation.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.0/css/foundation-flex.min.css">
     <link rel="stylesheet" href="css/master.css">
@@ -16,29 +18,38 @@
 
       <div class="row">
         <div class="small-4 columns">
-          <div class="row">
-            <h4>Score:</h4>
-            <h4 id="score_one"></h4>
+
+          <div class="row right">
+            <div id="padding-right" class="row">
+              <h4>Score &nbsp;</h4>
+              <h4 id="score_one"></h4>
+            </div>
+
           </div>
-          <div class="row">
+          <div class="row right">
             <div class="row">
               <div class="hand one"></div>
             </div>
           </div>
-          <div class="row">
-            <button class="button finish">Done</button>
-            <button class="button cancel">Cancel</button>
+          <div class="row right">
+            <button class="adjust_player_one_buttons button finish">Done</button>
+            <button class="adjust_player_one_buttons button cancel">Cancel</button>
           </div>
         </div>
 
         <div class="small-4 columns">
-          <h3>Turn:</h3>
-          <h3 id="turn"><= Player One</h3>
+
+          <h3 class="turn">Turn</h3>
+          <h3 id="turn">Player One</h3>
+
         </div>
 
         <div class="small-4 columns">
           <div class="row">
-            <h4>Score:</h4>
+
+
+            <h4>Score &nbsp;</h4>
+
             <h4 id="score_two"></h4>
           </div>
           <div class="row">

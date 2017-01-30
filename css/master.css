@@ -6,35 +6,43 @@ body {
   width: 80em;
 }
 
-h2, h4, h5 {
+.right {
+  display: block;
+  float: right;
+  clear: both;
+}
+
+.right > .adjust_player_one_buttons {
+  margin: 1em 0em 0em 1em;
+}
+
+#padding-right {
+  padding-right: 1em;
+}
+
+h2 {
+  font-family: 'Lobster', cursive;
+}
+
+h5, p {
+  font-family: 'Merriweather', serif;
   text-align: center;
-  vertical-align: center;
+}
+
+h2, h5 {
+  text-align: center;
+}
+
+#turn {
+    text-align: center;
+}
+
+.turn {
+    text-align: center;
 }
 
 .space {
-  height: 6em;
-}
-
-
-.square {
-  min-width: 2.5em;
-  min-height: 2.5em;
-  flex-grow: 1;
-  border-radius: 7px;
-  border: 0.15em solid #3498db;
-  background-color: #EAE2CF;
-}
-
-.handSquare {
-  width: 3em;
-  height: 3em;
-  flex-grow: 1;
-  border-radius: 10px;
-  border: 0.15em solid #3498db;
-  background-color: #EAE2CF;
-  overflow: hidden;
-  float: left;
-  display: block;
+  height: 2em;
 }
 
 .board {
@@ -47,12 +55,35 @@ h2, h4, h5 {
   background-color: #3498db;
 }
 
+.square {
+  min-width: 2.5em;
+  min-height: 2.5em;
+  flex-grow: 1;
+  border-radius: 7px;
+  border: 0.15em solid #3498db;
+  background-color: #EAE2CF;
+}
+
 .hand {
-  width: 21em;
+  width: 19.5em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.handSquare {
+  width: 2.5em;
+  height: 2.5em;
+  flex-grow: 1;
+  border-radius: 10px;
+  border: 0.15em solid #3498db;
+  background-color: #EAE2CF;
+  overflow: hidden;
+  float: left;
+  display: block;
 }
 
 .button{
-  margin: 1em
+  margin: 1em 1em 0em 0em;
 }
 
 #score_one, #score_two{
