@@ -6,11 +6,11 @@ class HandOne{
     this.score = 0
   }
 
-  render(){//callback){
+  render(){
     let missing = this.getHand()
 
     for(var i = 0; i < missing; i++){
-      let x = $('div.one').append(`<div class="handSquare"><h2 class="align-middle">${this.handTiles[i][0]}</h2><p class="points">${this.handTiles[i][1]}</p></div>`)
+      let x = $('div.one').append(`<div class="handSquare"><h5 class="align-middle">${this.handTiles[i][0]}</h5><p class="points">${this.handTiles[i][1]}</p></div>`)
     }
 
     $('#score_one').text(this.score)

@@ -1,6 +1,7 @@
 var tile = []
 var boardStack = []
 var handStack = []
+var wordStack = []
 var toggle = true
 
 class Scrabble {
@@ -11,7 +12,7 @@ class Scrabble {
   }
 
   render(){
-    this.board.render(this.addSquareClick.bind(this))
+    this.board.render(this.addBoardSquareClick.bind(this))
     this.playerOne.render()//this.addHandSquareClick.bind(this))
     this.addHandOneSquareClick()
 
@@ -21,12 +22,16 @@ class Scrabble {
     $(`${this.board.boardGrid[8][8].id}`).css('background-color', '#f39c12')
   }
 
-  addSquareClick(){
+  addBoardSquareClick(){
     $('.square').click((event) => {
       let $targetTile = $(event.target)
       if(tile.length != 0 && ($targetTile.text() === null  || $targetTile.text() === "") ){
         $targetTile.css('background-color', '#f39c12')
         $targetTile.append(`<h5>${tile[0]}</h5>`)
+
+        let x = this.board.getAdjacentSqaureDirection(event.target.id)
+        debugger
+        
         boardStack.push([tile[0], event.target.id, tile[1]])
         tile = []
       }
@@ -38,7 +43,7 @@ class Scrabble {
       if(toggle){
         let $targetTile = $(this)
         if(tile.length === 0 && $targetTile.text() != ""){
-          tile.push($targetTile.children('h2').text())
+          tile.push($targetTile.children('h5').text())
           tile.push(parseInt($targetTile.find('.points').text()))
 
           if(tile.length != 0){
@@ -57,9 +62,9 @@ class Scrabble {
       if(!toggle){
         let $targetTile = $(this)
         if(tile.length === 0 && $targetTile.text() != ""){
-          tile.push($targetTile.children('h2').text())
+          tile.push($targetTile.children('h5').text())
           tile.push(parseInt($targetTile.find('.points').text()))
-          
+
           if(tile.length != 0){
             handStack.push([tile[0], this.id])
           }
@@ -113,9 +118,9 @@ class Scrabble {
       if(handStack != []){
         for(var i = 0; i < handStack.length; i++){
           if(toggle){
-            $('div.one').append(`<div class="handSquare"><h2 class="align-middle">${handStack[i][0]}</h2></div>`)
+            $('div.one').append(`<div class="handSquare"><h5 class="align-middle">${handStack[i][0]}</h5></div>`)
           } else {
-            $('div.two').append(`<div class="handSquare"><h2 class="align-middle">${handStack[i][0]}</h2></div>`)
+            $('div.two').append(`<div class="handSquare"><h5 class="align-middle">${handStack[i][0]}</h5></div>`)
           }
         }
 
