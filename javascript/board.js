@@ -39,21 +39,51 @@ class Board{
     let x = parseInt(id.split('_')[0])
     let y = parseInt(id.split('_')[1])
 
-    let $north = $(`#${x+1}_${y}`).text()
-    let $south = $(`#${x-1}_${y}`).text()
+    let $north = $(`#${x-1}_${y}`).text()
+    let $south = $(`#${x+1}_${y}`).text()
     let $east = $(`#${x}_${y+1}`).text()
     let $west = $(`#${x}_${y-1}`).text()
 
-    if($north != ""){
-      return $north
-    } else if($south != "") {
-      return $south
-    } else if($east != "") {
-      return $east
-    } else if($west != "") {
-      return $west
-    } else {
-      return false
+    let first = true
+    let cross = false
+
+    let array = []
+    let tile = new Tile()
+
+    if($east != ""){
+      var i = 1
+
+      do {
+        i++
+        array.push([$east, tile.findValue($east)])
+        $east = $(`#${x}_${y+i}`).text()
+      } while($east != "")
+
+    } else if ($south != ""){
+      var i = 1
+
+      do {
+        i++
+        array.push([$south, tile.findValue($south)])
+        $south = $(`#${x+i}_${y}`).text()
+      } while($south != "")
+
+    } else if ($north != ""){
+
     }
+
+    return array
+
+    // if($north != ""){
+    //   return $north
+    // } else if($south != "") {
+    //   return $south
+    // } else if($east != "") {
+    //   return $east
+    // } else if($west != "") {
+    //   return $west
+    // } else {
+    //   return false
+    // }
   }
 }
