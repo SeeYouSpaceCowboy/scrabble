@@ -20,6 +20,11 @@ body {
   padding-right: 1em;
 }
 
+.point-font {
+  text-align: left;
+  font-size: 0.25em;
+}
+
 h2 {
   font-family: 'Lobster', cursive;
 }

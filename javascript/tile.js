@@ -75,6 +75,8 @@ class Tile {
 
   findValue(l){
     let x = this.allTiles.find(x => x.letter === l)
+    debugger
+    
     return x['points']
   }
 }
