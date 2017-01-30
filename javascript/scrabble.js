@@ -78,39 +78,50 @@ class Scrabble {
 
   onFinishTurn(){
     $('.finish').click((event) => {
-      let player = null
-      if(toggle){
-        player = this.playerOne
-      } else {
-        player = this.playerTwo
-      }
-
-      let boardStackScoreSum = 0
-      for(var i = 0; i < boardStack.length; i++){
-        for(var j = 0; j < player.handTiles.length; j++){
-          if(player.handTiles[j][0] === boardStack[i][0]){
-            player.handTiles.splice(j, 1)
-            break
-          }
+      var check = this.wordCheck().then(function(response) {
+        
+        // if check passes, continue with adding points etc
+      }).catch(function(e) {
+        console.log('we hit an error')
+        debugger
+        // if check fails, reject word, return tiles and lose turn
+      })
+      // if(check === "yes"){
+        let player = null
+        if(toggle){
+          player = this.playerOne
+        } else {
+          player = this.playerTwo
         }
 
-        boardStackScoreSum += boardStack[i][2]
-      }
+        let boardStackScoreSum = 0
+        for(var i = 0; i < boardStack.length; i++){
+          for(var j = 0; j < player.handTiles.length; j++){
+            if(player.handTiles[j][0] === boardStack[i][0]){
+              player.handTiles.splice(j, 1)
+              break
+            }
+          }
 
-      if(toggle){
-        this.playerOne.score += boardStackScoreSum
-        this.playerOne.render()
-        $('#turn').text("Player Two")
-      } else {
-        this.playerTwo.score += boardStackScoreSum
-        this.playerTwo.render()
-        $('#turn').text("Player One")
-      }
+          boardStackScoreSum += boardStack[i][2]
+        }
 
-      handStack = []
-      boardStack = []
-      toggle = !toggle
-    })
+        if(toggle){
+          this.playerOne.score += boardStackScoreSum
+          this.playerOne.render()
+          $('#turn').text("Player Two =>")
+        } else {
+          this.playerTwo.score += boardStackScoreSum
+          this.playerTwo.render()
+          $('#turn').text("<= Player One")
+        }
+      // } else {
+      //   alert('Not a word. Turn lost')
+      // }
+        handStack = []
+        boardStack = []
+        toggle = !toggle
+      })
   }
 
   onCancelMove(){
@@ -118,9 +129,11 @@ class Scrabble {
       if(handStack != []){
         for(var i = 0; i < handStack.length; i++){
           if(toggle){
+
             $('div.one').append(`<div class="handSquare"><h5 class="align-middle">${handStack[i][0]}</h5></div>`)
           } else {
             $('div.two').append(`<div class="handSquare"><h5 class="align-middle">${handStack[i][0]}</h5></div>`)
+
           }
         }
 
@@ -138,4 +151,24 @@ class Scrabble {
       }
     })
   }
+
+  wordCheck(){
+  
+    let word = ""
+    boardStack.forEach(function(letter){
+      word += letter[0]
+    })
+  
+    const wordsApiKey = "KxF7oR4hJcmshCTBdIaVTX9odfuzp1FvzfajsnXUxQ9zwn9vgX"
+    const URL = "https://wordsapiv1.p.mashape.com/words/"
+
+    var wordFeedback = "cat"
+    return $.ajax({
+          url: `${URL}${word}`,
+           headers: {'X-Mashape-Key': wordsApiKey}
+       
+        })
+
+  }
 }
+

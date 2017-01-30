@@ -14,6 +14,7 @@ class HandOne{
     }
 
     $('#score_one').text(this.score)
+    // debugger
   }
 
   getHand(){
