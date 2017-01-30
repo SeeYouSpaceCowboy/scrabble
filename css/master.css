@@ -6,7 +6,7 @@ body {
   width: 80em;
 }
 
-h2, h5 {
+h2, h4, h5 {
   text-align: center;
   vertical-align: center;
 }
@@ -54,3 +54,12 @@ h2, h5 {
 .button{
   margin: 1em
 }
+
+#score_one, #score_two{
+  text-indent: 0.5em;
+}
+
+/*.sub {
+  font-variant-position: sub;
+}
+*/
