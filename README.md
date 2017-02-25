@@ -1,7 +1,9 @@
 # Scrabble
 This app is an interactive javascript-based 2-person game that models the traditional Scrabble Game by Hasbro. 
 
-In this game, players get randomly delt hands of letter tiles pulled from the 100-tile Scrabble pile and they create words on the well-known 15x15 Scrabble board. Words are checked with AJAX web requests to a third-party dictionary API. A player who makes a successful word submission is awarded points based on the value of the played and adjacent letters. In the future, the app will support 2x and 3x bonus squares on the board.  Unsuccessful word submissions are denied, tiles are returned to the player's hand and the player loses his/her turn. No tile may be shifted or replaced after it has been played and scored.
+In this game, players get randomly delt hands of seven letter tiles pulled from the 100-tile Scrabble pile. Players take turns creating words on the well-known 15x15 Scrabble board. Hands are refreshed with new random tiles. Any new word must cross an existing word on the board. Words are checked with AJAX web requests to a third-party dictionary API. 
+
+A player who makes a successful word submission is awarded points based on the value of the played and adjacent letters. In the future, the app will support 2x and 3x bonus squares on the board.  Unsuccessful word submissions are denied, tiles are returned to the player's hand and the player loses his/her turn. No tile may be shifted or replaced after it has been played and scored.
 
 The game ends when all letters have been drawn and one player uses his or her last letter, or when all possible plays have been made.
 
