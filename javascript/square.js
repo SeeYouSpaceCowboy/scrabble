@@ -1,10 +1,10 @@
 class Square{
-  constructor(x, y){
-    this.x = x
-    this.y = y
+  constructor(tempRow, tempCol){
+    this.tempRow = tempRow
+    this.tempCol = tempCol
   }
 
   render(){
-    return `<div id="${this.x}_${this.y}" class="square" ></div>`
+    return `<div id="${this.tempRow}_${this.tempCol}" class="square" ></div>`
   }
 }

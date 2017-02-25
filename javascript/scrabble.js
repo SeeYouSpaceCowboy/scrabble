@@ -30,7 +30,7 @@ class Scrabble {
         $targetTile.append(`<h5>${tile[0]}</h5>`)
         boardStack.push([tile[0], event.target.id, tile[1]])
         wordStack.push([tile[0], tile[1]])
-        debugger
+      
         let array = this.board.getAdjacentSqaureDirection(event.target.id)
         if(array){
           array.forEach((element, idx, array) => wordStack.push(element) )
@@ -51,7 +51,7 @@ class Scrabble {
 
           if(tile.length != 0){
             handStack.push([tile[0], this.id, tile[1]])
-            debugger
+          
           }
 
           $targetTile.remove()
@@ -126,7 +126,7 @@ class Scrabble {
         let word = ""
         for(var i = 0; i < wordStack.length; i++){
           word += wordStack[i][0]
-          debugger
+        
         }
         alert(`Bad Bad Word: ${word}. Turn Lost.`)
       }
@@ -157,7 +157,7 @@ class Scrabble {
       for(var i = 0; i < handStack.length; i++){
         if(toggle){
           $('div.one').append(`<div class="handSquare"><h5 class="align-middle">${handStack[i][0]}</h5><p class="points">${handStack[i][2]}</p></div>`)
-          debugger
+        
         } else {
           $('div.two').append(`<div class="handSquare"><h5 class="align-middle">${handStack[i][0]}</h5><p class="points">${handStack[i][2]}</p></div>`)
         }

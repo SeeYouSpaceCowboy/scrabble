@@ -22,14 +22,14 @@ class Board{
     let square = null
     let boardArray = []
 
-    for(var x = 0; x < row; x++){
+    for(var tempRow = 0; tempRow < row; tempRow++){
         boardArray.push([])
 
-        boardArray[x].push(new Array(col))
+        boardArray[tempRow].push(new Array(col))
 
-        for(var y = 0; y < col; y++){
-          square = new Square(x, y)
-          boardArray[x][y] = square.render()
+        for(var tempCol = 0; tempCol < col; tempCol++){
+          square = new Square(tempRow, tempCol)
+          boardArray[tempRow][tempCol] = square.render()
         }
     }
     return boardArray
